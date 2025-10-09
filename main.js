@@ -22,8 +22,27 @@ function addBookToLibrary(title, author, pages, hasRead) {
     myLibrary.push(newBook)
 }
 
+// Function to display books from myLibrary
+function displayBook(){
+    const display = document.querySelector("#libraryDisplayList")
+    display.innerHTML = ""
+    for(let i = 0; i < myLibrary.length; i++){
+        const book = myLibrary[i]
+
+        const bookCard = document.createElement("div")
+        bookCard.classList.add("book-card")
+        bookCard.textContent = `${book.title} by ${book.author}, ${book.pages} pages, ${book.hasRead ? "read" : "not read"}`
+
+        display.appendChild(bookCard)
+    }
+}
 
 addBookToLibrary("Dune", "Frank Herbert", 412, false);
+addBookToLibrary("Dune", "Frank Herbert", 412, false);
+addBookToLibrary("Dune", "Frank Herbert", 412, false);
+addBookToLibrary("Dune", "Frank Herbert", 412, false);
 
+
+displayBook()
 
 console.log(myLibrary);
