@@ -29,11 +29,16 @@ function displayBook(){
     for(let i = 0; i < myLibrary.length; i++){
         const book = myLibrary[i]
 
+        const container = document.createElement("div")
         const bookCard = document.createElement("div")
-        bookCard.classList.add("book-card")
-        bookCard.textContent = `${book.title} by ${book.author}, ${book.pages} pages, ${book.hasRead ? "read" : "not read"}`
 
-        display.appendChild(bookCard)
+        container.classList.add("container")
+        bookCard.classList.add("book-card")
+        bookCard.textContent = `${book.title} by ${book.author}\n${book.pages} Pages\n${book.hasRead ? "Read" : "Not Read"}`;
+        bookCard.style.whiteSpace = "pre-line";
+
+        display.appendChild(container)
+        container.appendChild(bookCard)
     }
 }
 
