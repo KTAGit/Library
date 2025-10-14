@@ -31,12 +31,25 @@ function displayBook(){
 
         const container = document.createElement("div")
         const bookCard = document.createElement("div")
+        const title = document.createElement("h2")
+        const author = document.createElement("p")
+        const status = document.createElement("p")
 
         container.classList.add("container")
         bookCard.classList.add("book-card")
-        bookCard.textContent = `${book.title} by ${book.author}\n${book.pages} Pages\n${book.hasRead ? "Read" : "Not Read"}`;
-        bookCard.style.whiteSpace = "pre-line";
+        author.classList.add("author")
+        status.classList.add("status")
 
+        title.textContent = `${book.title}`
+        author.textContent = `By\n${book.author}`
+        status.textContent = `${book.hasRead ? "Read" : "Not Read"}`
+        //bookCard.textContent = `${book.title} by ${book.author}\n${book.pages} Pages\n${book.hasRead ? "Read" : "Not Read"}`;
+        author.style.whiteSpace = "pre-line";
+
+
+        bookCard.appendChild(title)
+        bookCard.appendChild(author)
+        bookCard.appendChild(status)
         display.appendChild(container)
         container.appendChild(bookCard)
     }
