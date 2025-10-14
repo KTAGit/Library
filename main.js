@@ -1,3 +1,8 @@
+const display = document.querySelector("#libraryDisplayList")
+const buttonContainer = document.querySelector(".button-container")
+const addButton = document.querySelector(".add-button")
+
+
 // Array to store all book object
 const myLibrary = []
 
@@ -24,8 +29,9 @@ function addBookToLibrary(title, author, pages, hasRead) {
 
 // Function to display books from myLibrary
 function displayBook(){
-    const display = document.querySelector("#libraryDisplayList")
+    
     display.innerHTML = ""
+
     for(let i = 0; i < myLibrary.length; i++){
         const book = myLibrary[i]
 
@@ -60,7 +66,11 @@ addBookToLibrary("Dune", "Frank Herbert", 412, false);
 addBookToLibrary("Dune", "Frank Herbert", 412, false);
 addBookToLibrary("Dune", "Frank Herbert", 412, false);
 
+addButton.addEventListener("click", () => {
+    
+})
 
 displayBook()
+display.appendChild(buttonContainer)
 
 console.log(myLibrary);
