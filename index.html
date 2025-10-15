@@ -19,21 +19,23 @@
         
     </div>
 
-    <form action="" class="form">
+    <div class="body-tint off"></div>
+
+    <form action="" id="form" class="form-none">
 
         <div class="wrapper">
             <label for="title">Title</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" required>
         </div>
         
         <div class="wrapper">
             <label for="author">Author</label>
-            <input type="text" name="author" id="author">
+            <input type="text" name="author" id="author" required>
         </div>
 
         <div class="wrapper">
             <label for="pages">Number of pages</label>
-            <input type="number" name="pages" id="pages">
+            <input type="number" name="pages" id="pages" required>
         </div>
 
         <div class="wrapper">
@@ -45,7 +47,7 @@
         </div>
 
         <div class="wrapper">
-            <button class="add-book-btn">Add Book</button>
+            <button class="add-book-btn" type="button">Add Book</button>
         </div>
         
     </form>

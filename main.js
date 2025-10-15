@@ -1,7 +1,18 @@
 const display = document.querySelector("#libraryDisplayList")
 const buttonContainer = document.querySelector(".button-container")
 const addButton = document.querySelector(".add-button")
+const bodyTint = document.querySelector(".body-tint")
+const form = document.querySelector("#form")
+const statusSwitch = document.querySelector(".switch-container")
+const read = document.querySelector(".switch-right")
+const notRead = document.querySelector(".switch-left")
+const title = document.querySelector("#title")
+const author = document.querySelector("#author")
+const numberOfPages = document.querySelector("#pages")
+const addBookBtn = document.querySelector(".add-book-btn")
 
+
+let readStatus = false
 
 // Array to store all book object
 const myLibrary = []
@@ -61,16 +72,54 @@ function displayBook(){
     }
 }
 
-addBookToLibrary("Dune", "Frank Herbert", 412, false);
-addBookToLibrary("Dune", "Frank Herbert", 412, false);
-addBookToLibrary("Dune", "Frank Herbert", 412, false);
-addBookToLibrary("Dune", "Frank Herbert", 412, false);
+// Toggle the book's read status when the user clicks the switch
+statusSwitch.addEventListener("click", () => {
 
-addButton.addEventListener("click", () => {
-    
+    const notReadBgColor = getComputedStyle(notRead).backgroundColor;
+
+    if (notReadBgColor === "rgb(255, 255, 255)"){
+        notRead.style.backgroundColor = "#16415A"
+        notRead.style.color = "white"
+        read.style.backgroundColor = "white"
+        read.style.color = "#d7a13d"
+        readStatus = true
+        console.log("on READ")
+    }
+    else {
+        notRead.style.backgroundColor = "white"
+        notRead.style.color = "#d7a13d"
+        read.style.backgroundColor = "#16415A"
+        read.style.color = "white"
+        readStatus = false
+        console.log("on NOT READ")
+    }
 })
 
-displayBook()
+// Show the form popup and clear previous input values when "Add Book" is clicked
+addButton.addEventListener("click", () => {
+    title.value = ""
+    author.value = ""
+    numberOfPages.value = ""
+    bodyTint.classList.replace("off", "on");
+    form.classList.replace("form-none", "form");
+})
+
+// Close the form popup when the background overlay is clicked
+bodyTint.addEventListener("click", () => {
+    bodyTint.classList.replace("on", "off");
+    form.classList.replace("form", "form-none");
+})
+
+// Add the user's new book to the library and hide the form popup
+addBookBtn.addEventListener("click", () => {
+    addBookToLibrary(title.value, author.value, numberOfPages.value, readStatus);
+    displayBook()
+    bodyTint.classList.replace("on", "off");
+    form.classList.replace("form", "form-none");
+    display.appendChild(buttonContainer)
+})
+
+
 display.appendChild(buttonContainer)
 
 console.log(myLibrary);
