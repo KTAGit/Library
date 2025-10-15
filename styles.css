@@ -66,11 +66,13 @@ h2 {
 }
 
 .author {
-    height: 60px;
+    height: 70px;
     margin-top: 0;
+    margin-bottom: 10px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight:lighter;
     color: #52524f;
+    font-size: 20px;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
@@ -83,12 +85,16 @@ h2 {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.number-of-pages {
+    justify-self: end;
+    margin: 0;
+    font-size: 13px;
+}
 
 .button-container {
     width: 250px;
     height: 300px;
     display: grid;
-    
     justify-content: center;
     justify-self: end;
 }

@@ -51,15 +51,19 @@ function displayBook(){
         const title = document.createElement("h2")
         const author = document.createElement("p")
         const status = document.createElement("p")
+        const pageAmount = document.createElement("p")
+
 
         container.classList.add("container")
         bookCard.classList.add("book-card")
         author.classList.add("author")
         status.classList.add("status")
+        pageAmount.classList.add("number-of-pages")
 
         title.textContent = `${book.title}`
         author.textContent = `By\n${book.author}`
         status.textContent = `${book.hasRead ? "Read" : "Not Read"}`
+        pageAmount.textContent = `pp. ${book.pages}`
         //bookCard.textContent = `${book.title} by ${book.author}\n${book.pages} Pages\n${book.hasRead ? "Read" : "Not Read"}`;
         author.style.whiteSpace = "pre-line";
 
@@ -67,6 +71,7 @@ function displayBook(){
         bookCard.appendChild(title)
         bookCard.appendChild(author)
         bookCard.appendChild(status)
+        bookCard.appendChild(pageAmount)
         display.appendChild(container)
         container.appendChild(bookCard)
     }
