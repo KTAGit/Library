@@ -19,29 +19,35 @@
         
     </div>
 
-    <form action="" style="display: none;">
+    <form action="" class="form">
 
-        <div>
+        <div class="wrapper">
             <label for="title">Title</label>
             <input type="text" name="title" id="title">
         </div>
         
-        <div>
+        <div class="wrapper">
             <label for="author">Author</label>
             <input type="text" name="author" id="author">
         </div>
 
-        <div>
+        <div class="wrapper">
             <label for="pages">Number of pages</label>
             <input type="number" name="pages" id="pages">
         </div>
 
-        <div>
-            
+        <div class="wrapper">
+            <label class="status">Status</label>
+            <div class="switch-container">
+                <div class="switch-left">Not Read</div>
+                <div class="switch-right">Read</div>
+            </div>
         </div>
 
-
-
+        <div class="wrapper">
+            <button class="add-book-btn">Add Book</button>
+        </div>
+        
     </form>
 
     <script src="main.js" ></script>
