@@ -146,11 +146,16 @@ bodyTint.addEventListener("click", () => {
 
 // Add the user's new book to the library and hide the form popup
 addBookBtn.addEventListener("click", () => {
-    addBookToLibrary(title.value, author.value, numberOfPages.value, readStatus);
-    displayBook()
-    bodyTint.classList.replace("on", "off");
-    form.classList.replace("form", "form-none");
-    display.appendChild(buttonContainer)
+    if (title.value === "" || author.value === "" || numberOfPages.value === "") {
+        return
+    }else {
+        addBookToLibrary(title.value, author.value, numberOfPages.value, readStatus);
+        displayBook()
+        bodyTint.classList.replace("on", "off");
+        form.classList.replace("form", "form-none");
+        display.appendChild(buttonContainer)
+    }
+    
 })
 
 
