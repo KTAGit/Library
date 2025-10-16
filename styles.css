@@ -196,6 +196,10 @@ h2 {
     margin: 0;
 }
 
+.status:hover {
+    cursor: pointer;
+}
+
 .switch-container {
     display: grid;
     justify-self: center;

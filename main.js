@@ -10,6 +10,7 @@ const title = document.querySelector("#title")
 const author = document.querySelector("#author")
 const numberOfPages = document.querySelector("#pages")
 const addBookBtn = document.querySelector(".add-book-btn")
+const currentStatus = document.querySelector(".status")
 
 
 let readStatus = false
@@ -68,7 +69,9 @@ function displayBook(){
         status.textContent = `${book.hasRead ? "Read" : "Not Read"}`
         pageAmount.textContent = `pp. ${book.pages}`
         removeBtn.textContent = "X"
-        removeBtn.value = book.id
+        removeBtn.dataset.id = book.id
+        status.dataset.id = book.id
+        status.title = "Change Status"
 
         bookCard.appendChild(title)
         bookCard.appendChild(author)
@@ -80,7 +83,7 @@ function displayBook(){
         fragment.appendChild(container)
 
         removeBtn.addEventListener("click", () => {
-            const removeItem = removeBtn.value
+            const removeItem = removeBtn.dataset.id
 
             if (removeItem === myLibrary[i].id) {
                 const index = myLibrary.indexOf(myLibrary[i])
@@ -88,6 +91,18 @@ function displayBook(){
                 displayBook()
                 display.appendChild(buttonContainer)
             }        
+        })
+        status.addEventListener("click", () => {
+
+            if(status.dataset.id === myLibrary[i].id){
+                if (myLibrary[i].hasRead === true){
+                    myLibrary[i].hasRead = false
+                    status.textContent = "Not Read"
+                }else {
+                    myLibrary[i].hasRead = true
+                    status.textContent = "Read"
+                }
+            }
         })
     }
     display.appendChild(fragment)
