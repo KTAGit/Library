@@ -43,6 +43,8 @@ function displayBook(){
     
     display.innerHTML = ""
 
+    const fragment = document.createDocumentFragment();
+
     for(let i = 0; i < myLibrary.length; i++){
         const book = myLibrary[i]
 
@@ -52,29 +54,43 @@ function displayBook(){
         const author = document.createElement("p")
         const status = document.createElement("p")
         const pageAmount = document.createElement("p")
-
+        const removeBtn = document.createElement("div")
 
         container.classList.add("container")
         bookCard.classList.add("book-card")
         author.classList.add("author")
         status.classList.add("status")
         pageAmount.classList.add("number-of-pages")
+        removeBtn.classList.add("remove-btn")
 
         title.textContent = `${book.title}`
         author.textContent = `By\n${book.author}`
         status.textContent = `${book.hasRead ? "Read" : "Not Read"}`
         pageAmount.textContent = `pp. ${book.pages}`
-        //bookCard.textContent = `${book.title} by ${book.author}\n${book.pages} Pages\n${book.hasRead ? "Read" : "Not Read"}`;
-        author.style.whiteSpace = "pre-line";
-
+        removeBtn.textContent = "X"
+        removeBtn.value = book.id
 
         bookCard.appendChild(title)
         bookCard.appendChild(author)
         bookCard.appendChild(status)
         bookCard.appendChild(pageAmount)
-        display.appendChild(container)
         container.appendChild(bookCard)
+        container.appendChild(removeBtn)
+
+        fragment.appendChild(container)
+
+        removeBtn.addEventListener("click", () => {
+            const removeItem = removeBtn.value
+
+            if (removeItem === myLibrary[i].id) {
+                const index = myLibrary.indexOf(myLibrary[i])
+                myLibrary.splice(index, 1)
+                displayBook()
+                display.appendChild(buttonContainer)
+            }        
+        })
     }
+    display.appendChild(fragment)
 }
 
 // Toggle the book's read status when the user clicks the switch
@@ -88,7 +104,6 @@ statusSwitch.addEventListener("click", () => {
         read.style.backgroundColor = "white"
         read.style.color = "#d7a13d"
         readStatus = true
-        console.log("on READ")
     }
     else {
         notRead.style.backgroundColor = "white"
@@ -96,7 +111,6 @@ statusSwitch.addEventListener("click", () => {
         read.style.backgroundColor = "#16415A"
         read.style.color = "white"
         readStatus = false
-        console.log("on NOT READ")
     }
 })
 
@@ -126,5 +140,3 @@ addBookBtn.addEventListener("click", () => {
 
 
 display.appendChild(buttonContainer)
-
-console.log(myLibrary);
